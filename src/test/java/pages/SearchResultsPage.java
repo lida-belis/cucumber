@@ -8,8 +8,9 @@ public class SearchResultsPage {
     private WebDriver driver;
 
     private By HOTELNAME = By.xpath("//span[contains(text(),'Kimpton Vividora Hotel')]");
-    private By SCORE = By.xpath(HOTELNAME + "/ancestor::div[@class='sr_item_content sr_item_content_slider_wrapper ']" +
-            "/descendant::div[@class='bui-review-score__badge']");
+    private By SCORE = By.xpath("//span[contains(text(),'Kimpton Vividora Hotel')]" +
+            "/ancestor::div[@class='sr_item_content sr_item_content_slider_wrapper ']" +
+            "//div[@class='bui-review-score__badge']");
 
     public SearchResultsPage(WebDriver driver) {
         this.driver = driver;

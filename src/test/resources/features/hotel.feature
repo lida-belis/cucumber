@@ -10,4 +10,4 @@ Feature: Тест по поиску отеля
   Scenario: Поиск отеля Kimpton Vividora Hotel и проверка
     When find "Kimpton Vividora Hotel" and click button
     Then name "Kimpton Vividora Hotel" is displayed
-    Then score "9.8" is displayed
+    * score "9,2" is displayed

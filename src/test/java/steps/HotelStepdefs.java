@@ -1,20 +1,21 @@
 package steps;
 
 import base.BaseUtil;
-import io.cucumber.java.bs.A;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.DriverManagerType;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import pages.SearchPage;
 import pages.SearchResultsPage;
+import utils.Waiters;
 
 public class HotelStepdefs extends BaseUtil {
     private BaseUtil baseUtil;
+    private By HOTELNAME = By.xpath("//span[contains(text(),'Kimpton Vividora Hotel')]");
 
     public HotelStepdefs(BaseUtil baseUtil) {
         this.baseUtil = baseUtil;
@@ -46,6 +47,8 @@ public class HotelStepdefs extends BaseUtil {
 
     @Then("name {string} is displayed")
     public void nameIsDisplayed(String hotelName) {
+        Waiters waiters = new Waiters(baseUtil.driver);
+        waiters.waitForVisibility(HOTELNAME);
         SearchResultsPage resultsPage = new SearchResultsPage(baseUtil.driver);
         Assert.assertEquals(resultsPage.getHotelNameText(), hotelName);
     }
